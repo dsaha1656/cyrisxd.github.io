@@ -30,7 +30,7 @@ featured_image: /images/demo/contact.jpg
     }
 
     .addressInput {
-        width: 88%;
+        width: 68%;
     }
 
     /* The container */
@@ -138,20 +138,42 @@ featured_image: /images/demo/contact.jpg
         transform: rotate(45deg);
     }
 
+    .units .container {
+        margin: 8px 20px 8px 0px;
+    }
+
+    .selectControls {
+        float: right;
+        margin-right: 25px;
+    }
+
+    .selectControls span:hover {
+        cursor: pointer;
+        color: #2196F3;
+    }
+
     @media only screen and (max-width: 800px) {
         .searchBoxes {
             width: 100%;
             display: block;
-            margin-top:20px;
+            margin-top: 20px;
         }
 
         .radius {
             width: 100%;
-            margin-top:20px;
+            margin-top: 20px;
         }
 
         .addressInput {
             width: 100%;
+        }
+
+        .selectControls {
+            float: none;
+            margin-right: 0px;
+            text-align: center;
+            width:100%;
+            margin:30px 0px 20px 0px;
         }
     }
 
@@ -194,8 +216,19 @@ featured_image: /images/demo/contact.jpg
         <input type="text" name="address" placeholder="Required" class="contact-form__input" id="autocomplete">
     </div>
     <div class="radius">
-        <label class="contact-form__label">Within (Miles)</label>
+        <label class="contact-form__label">Within</label>
         <input type="text" name="radius" placeholder="Required" class="contact-form__input" value="10" id="radius">
+    </div>
+    <div class="units">
+        <label class="container">Kilometres
+            <input type="radio" value="km" name="units" checked>
+            <span class="checkmark"></span>
+        </label>
+        <label class="container">Miles
+            <input type="radio" value="mi" name="units">
+            <span class="checkmark"></span>
+        </label>
+
     </div>
 </div>
 
@@ -207,7 +240,8 @@ featured_image: /images/demo/contact.jpg
 </div>
 
 <h2>Select some popular search terms</h2>
-
+<div class="selectControls" style="float:right"><span onclick="selectAll()">Select All</span> / <span
+        onclick="deselectAll()">Deselect All</span></div>
 <div class="terms">
     <label class="container">Developer
         <input type="checkbox" value="Developer" name="tags">
@@ -526,7 +560,8 @@ featured_image: /images/demo/contact.jpg
 
             let searchTerms = [];
             let customTermField = document.querySelector('input[name=customFields]').value;
-            let latlngrad = `${latlng},${document.querySelector("#radius").value}mi`;
+
+            let latlngrad = `${latlng},${document.querySelector("#radius").value}${$("input[name=units]:checked").val()}`;
 
             // Gather checkboxes
             $("input:checkbox[name=tags]:checked").each(function () {
@@ -552,6 +587,15 @@ featured_image: /images/demo/contact.jpg
             console.log(searchString);
 
         }
+
+        function selectAll() {
+            $("input:checkbox[name=tags]").attr('checked', true);
+        }
+
+        function deselectAll() {
+            $("input:checkbox[name=tags]").attr('checked', false);
+        }
+
 
     </script>
 
