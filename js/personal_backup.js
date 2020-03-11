@@ -43,7 +43,7 @@
 			$('body, html').animate({
 				scrollTop: 0
 			}, 300);
-			
+
 			// Find transition time
 			var transitionTime = 400;
 
@@ -81,12 +81,12 @@
 
 	if ($('body').hasClass('ajax-loading')) {
 
-		
+
 
 		$(document).on('click', 'a', function (event) {
 
-			
-		
+
+
 			// Don't follow link
 			event.preventDefault();
 
@@ -120,7 +120,7 @@
 				// Change navTarget
 				navTarget = thisTarget;
 
-				
+
 
 				// Switch the URL via History
 				History.pushState(null, docTitle, thisTarget);
@@ -136,7 +136,7 @@
 
 	function pageFunctions() {
 
-		
+
 		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Show content
 
 		// Wait until first image has loaded
